@@ -1,0 +1,77 @@
+<div class="container p-0">
+  <div class="row mt-2">
+    {{#if personas}}  
+    <h3 class="text-center text-uppercase p-2">PQRSD pendientes</h3>
+    {{!-- <form action="/list-search" method="post">
+      <div class="input-group mb-2">
+        <input type="number" class="form-control" placeholder="Local..." id="search" name="search" required/>
+        <div class="input-group-btn">
+          <button class="btn btn-outline-success" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+    </form> --}}
+    {{/if}}
+    {{#if personas}}   
+        <table class="table text-center align-middle table-striped rounded-3 overflow-hidden">
+          <thead>
+            <tr class="table-dark">
+              <td scope="col">Radicado</td>
+              <td scope="col">Local</td>
+              <td scope="col">Nombre</td>
+              <td scope="col">Categoria</td>
+              <td scope="col">Dias restantes</td>              
+              <td scope="col">Asunto</td>
+              <td scope="col">Fecha</td>
+              <td scope="col">Despachado</td>
+              <td scope="col">Registrado</td>              
+              <td scope="col">Acciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each personas}}
+              <tr>
+                <td>{{id_pqrsd}}</td>
+                <td><a href="/central/details/{{local}}">{{local}}</a></td>
+                <td>{{nombre_usuario}}</td>
+                <td>{{nombre_categoria}}</td>
+                {{#when nombre_categoria 'noteq' "Solicitud"}}
+                <td>{{resDays}}</td>
+                {{else}}
+                <td>{{solDays}}</td>
+                {{/when}}
+                <td>{{asunto}}</td>
+                <td>{{fecha}}</td>
+                <td>{{nombre_despachado}}</td>
+                <td>{{nombre_administrador}}</td>      
+                <td>
+                  <div class="btn-group">
+                    <a href="/central/edit/{{id_pqrsd}}" class="btn btn-warning p-2">
+                    <i class="fa-solid fa-pencil"></i></a>
+                    {{!-- <a href="/delete/{{id_pqrsd}}" class="btn btn-danger p-2">
+                    <i class="fa-solid fa-trash"></i></a> --}}
+                  </div>
+                </td>                
+              </tr>
+            {{/each}}            
+          </tbody>
+          <tfoot>
+            <tr class="table-dark">
+              <td colspan="10">PQRSD PENDIENTES</td>
+            </tr>
+        </table>        
+    </div>
+    {{!-- {{>pagination}} --}}
+    {{else}}
+      <div class="card text-center mx-auto p-0 " style="width: 350px;">
+        <div class="card-header">
+          <h3>Ups!<p>No hay más PQRSD pendientes </p> </h3>
+        </div>
+        <div class="card-body">
+          <p>Crea un PQRSD pendiente haciendo click en el botón</p>
+          <a href="/central/add" class="btn btn-primary">Crear</a>
+        </div>   
+        </div>   
+    {{/if}}  
+</div>

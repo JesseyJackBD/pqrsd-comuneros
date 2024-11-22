@@ -1,0 +1,149 @@
+<div class="container">
+  <div class="row">
+    <div class="col-ms-4 col-md-12 mt-5 p-0">
+      <div class="card text-center">
+        <div class="card-header">
+          <h3 class="text-uppercase">Informacion Local</h3>
+        </div>
+        <div class="card-body">
+          <div class="input-group mt-2">
+            <label for="local" class="input-group-text">Local</label>
+            <input
+              class="form-control"
+              type="number"
+              name="id_local"
+              id="id_local"
+              value="{{persona.local}}"
+              disabled
+              required
+            />
+            <label for="fecha" class="input-group-text">Estado Local</label>
+            <input
+              class="form-control"
+              type="text"
+              name="id_estado_local"
+              id="id_estado_local"
+              value="{{persona.nombre_estado}}"
+              disabled
+              required
+            />
+          </div>
+          <div class="input-group mt-2">
+            <label for="asunto" class="input-group-text">Usuario</label>
+            <input
+              class="form-control"
+              type="text"
+              name="nombre_usuario"
+              id="nombre_usuario"
+              value="{{persona.nombre_usuario}}"
+              disabled
+              required
+            />
+          </div>
+          <div class="input-group mt-2">
+            <label for="fecha" class="input-group-text">Telefono</label>
+            <input
+              class="form-control"
+              type="text"
+              name="telefono_usuario"
+              id="telefono_usuario"
+              value="{{persona.telefono_usuario}}"
+              disabled
+              required
+            />
+            <label for="fecha" class="input-group-text">Correo</label>
+            <input
+              class="form-control"
+              type="text"
+              name="correo_usuario"
+              id="correo_usuario"
+              value="{{persona.correo_usuario}}"
+              disabled
+              required
+            />
+          </div>
+          <div class="input-group mt-2">
+            <label for="fecha" class="input-group-text">Nombre Local</label>
+            <input
+              class="form-control"
+              type="text"
+              name="nombre_local"
+              id="nombre_local"
+              value="{{persona.nombre_local}}"
+              disabled
+              required
+            />
+            <label for="fecha" class="input-group-text">Descripcion Local</label>
+            <input
+              class="form-control"
+              type="text"
+              name="descripcion_local"
+              id="descripcion_local"
+              value="{{persona.descripcion_local}}"
+              disabled
+              required
+            />
+          </div>
+          <div class="d-flex flex-row-reverse pt-2">
+          <a class="btn btn-warning" href="/central/detailsEdit/{{persona.local}}" role="button">Editar Local</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="card text-center mt-4 p-0">
+      <div class="card-header">
+        <h3 class="text-center text-uppercase p-2">Lista de PQRSD</h3>
+      </div>
+      <div class="card-body">
+        <table
+          class="table text-center align-middle table-striped rounded-3 overflow-hidden"
+        >
+          <thead>
+            <tr class="table-dark">
+              <td scope="col">Radicado</td>
+              <td scope="col">Categoria</td>
+              <td scope="col">Estado</td>
+              <td scope="col">Asunto</td>
+              <td scope="col">Fecha</td>
+              <td scope="col">Despachado</td>
+              <td scope="col">Registrado</td>
+              <td scope="col">Acciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each personas}}
+              <tr>
+                <td>{{id_pqrsd}}</td>
+                <td>{{nombre_categoria}}</td>
+                <td>{{nombre_estado}}</td>
+                <td>{{asunto}}</td>
+                <td>{{fecha}}</td>
+                <td>{{nombre_despachado}}</td>
+                <td>{{nombre_administrador}}</td>
+                <td>
+                  <div class="btn-group">
+                    <a href="/central/edit/{{id_pqrsd}}" class="btn btn-warning p-2">
+                      <i class="fa-solid fa-pencil"></i></a>
+                    <a href="/central/delete/{{id_pqrsd}}" class="btn btn-danger p-2" onclick="return confirm('¿Estas seguro de eliminarlo?')">
+                      <i class="fa-solid fa-trash"></i></a>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+          <tfoot>
+            <tr class="table-dark">
+              <td colspan="8">LISTA DE PQRSD</td>
+            </tr>
+          </tfoot>
+          <h3 class="form-text text-muted">Cantidad de PQRSD pendientes: {{contarPendiente.pendiente}}
+          </h3>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

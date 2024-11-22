@@ -1,0 +1,42 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-ms-4 col-md-8 col-ml-8 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3 class="text-uppercase">EDITANDO LOCAL {{persona.local}}</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/central/detailsEdit/{{persona.local}}" method="post">
+                        <div class="input-group mt-2">
+                        <label for="" class="input-group-text">Cedula Usuario Actual</label>
+                        <input class="form-control" type="text" name="id_usuario" id="id_usuario" placeholder="Cedula" value="{{persona.id_usuario}}" required>
+                    <div class="input-group mt-2">
+                        <label for="id_estado_local" class="input-group-text">Estado Local</label>
+                        <select class="form-select" aria-label="Default select example"  name="id_estado_local" required>
+                            <option selected hidden value="{{persona.id_estado_local}}">{{persona.nombre_estado}}</option>
+                            {{#each seleccionEstado}}
+                            <option value="{{id_estado_local}}">{{nombre_estado}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    </div>
+                    <div class="input-group mt-2">
+                        <label for="" class="input-group-text">Nombre</label>
+                        <input class="form-control" type="text" name="nombre_local" id="nombre_local" placeholder="Nombre Local" value="{{persona.nombre_local}}" required>
+                    </div>
+                    <div class="input-group mt-2">
+                        <label for="" class="input-group-text">Descripcion</label>
+                        <input class="form-control" type="text" name="descripcion_local" id="descripcion_local" placeholder="Descripcion Local" value="{{persona.descripcion_local}}" required>
+                    </div>
+                    {{#if message}}
+                        <p class="m-2" style="color: red;">{{message}}</p>
+                    {{/if}}
+                    <div class="form-group mt-4 d-grid gap-2">
+                        <button class="btn btn-success">Actualizar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

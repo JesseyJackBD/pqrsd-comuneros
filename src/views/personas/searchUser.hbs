@@ -1,0 +1,72 @@
+<div class="container p-0">
+  <div class="row mt-2">
+    <h3 class="text-center text-uppercase p-2" >Resultado de busqueda de: {{busqueda}}</h3>   
+    <form action="/central/list-searchUser" method="post">
+      <div class="input-group mb-2">
+        <input type="text" class="form-control" placeholder="Local..." id="search" name="search"  required/>
+        <div class="input-group-btn">
+          <button class="btn btn-outline-success" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    {{#if personas}}      
+        <table class="table text-center align-middle table-striped rounded-3 overflow-hidden mt-10">
+          <thead>
+            <tr class="table-dark">
+              <td scope="col">Radicado</td>
+              <td scope="col">Local</td>
+              <td scope="col">Nombre</td>
+              <td scope="col">Categoria</td>
+              <td scope="col">Estado</td>              
+              <td scope="col">Asunto</td>
+              <td scope="col">Fecha</td>
+              <td scope="col">Registrado</td>              
+              <td scope="col">Acciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each personas}}
+              <tr>
+                <td>{{id_pqrsd}}</td>
+                <td><a href="/central/details/{{local}}">{{local}}</a></td>
+                <td>{{nombre_usuario}}</td>
+                <td>{{nombre_categoria}}</td>
+                <td>{{nombre_estado}}</td>                
+                <td>{{asunto}}</td>
+                <td>{{fecha}}</td>
+                <td>{{nombre_administrador}}</td>                
+                <td>
+                  <div class="btn-group">
+                    <a href="/central/edit/{{id_pqrsd}}" class="btn btn-warning p-2">
+                    <i class="fa-solid fa-pencil"></i></a>
+                    <a href="/central/delete/{{id_pqrsd}}" class="btn btn-danger p-2">
+                    <i class="fa-solid fa-trash"></i></a>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}            
+          </tbody>
+          <tfoot>
+            <tr class="table-dark">
+              <td colspan="9">USUARIO {{busqueda}}</td>
+            </tr>
+          </tfoot>          
+          {{!-- <h3 class="form-text text-muted" >Cantidad de PQRSD pendientes: <a href="/list-search/cat/:id/{{rTotal.local}}">{{contarPendiente.pendiente}} </a> Cantidad de PQRSD en espera: <a href="/list-search/cat/:id/{{rTotal.local}} ">{{contarEspera.espera}}</a> </h3>           --}}
+        </table>        
+    </div>
+    {{!-- {{>pagination}} --}}
+    {{else}}
+      <div class="card text-center mx-auto p-0" style="width: 350px;">
+        <div class="card-header">
+          <h3>No se encontraron resultados para la busqueda de {{busqueda}}</h3>
+        </div>
+        <div class="card-body">
+          <p>Presiona este boton para que puedas registrar un PQRSD en la
+            pagina</p>
+          <a href="/central/add" class="btn btn-primary">Crear</a>
+        </div>   
+        </div>   
+    {{/if}}  
+</div>

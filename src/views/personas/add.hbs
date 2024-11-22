@@ -1,0 +1,76 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-ms-4 col-md-8 col-ml-8 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3 class="text-uppercase">CREAR NUEVO PQRSD</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/central/add" method="post">
+                    <div class="input-group mt-2">
+                        <label for="id_pqrsd" class="input-group-text">Radicado</label>
+                        <input class="form-control" type="number" name="id_pqrsd" id="id_pqrsd" placeholder="# Radicado" autofocus required>
+                    </div>
+                    <div class="input-group mt-2">
+                        <label for="id_local" class="input-group-text">Local</label>
+                        <input class="form-control" type="number" name="id_local" id="id_local" placeholder="Escribir Local" required>
+                    </div>                                            
+
+                    <div class="input-group mt-2">
+                        <label for="id_categoria" class="input-group-text">Categoria</label>
+                        <select class="form-select" aria-label="Default select example"  name="id_categoria" required>
+                            <option selected value="">Seleccionar categoria</option>
+                            {{#each seleccionCategoria}}
+                            <option value="{{id_categoria}}">{{nombre_categoria}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="input-group mt-2">
+                        <label for="id_estado" class="input-group-text">Estado</label>
+                        <select class="form-select" aria-label="Default select example"  name="id_estado" required>
+                            <option selected value="">Seleccionar estado</option>
+                            {{#each seleccionEstado}}
+                            <option value="{{id_estado}}">{{nombre_estado}}</option>
+                            {{/each}}
+                        </select>
+                    </div>            
+                
+                    <div class="input-group mt-2">
+                        <label for="asunto" class="input-group-text">Asunto</label>
+                        <textarea class="form-control" type="text" name="asunto" id="asunto" placeholder="Contendio del pqrsd" required></textarea>
+                    </div>
+                    <div class="input-group mt-2">
+                        <label for="fecha" class="input-group-text">Fecha</label>
+                        <input class="form-control" type="date" name="fecha" id="fecha" required>
+                    </div>
+                    <div class="input-group mt-2">
+                        <label for="id_administrador" class="input-group-text">Creador Por</label>                        
+                        <select class="form-select" aria-label="Default select example"  name="id_administrador" required>
+                            <option selected value="">Seleccionar</option>
+                            {{#each seleccionAdministrador}}
+                            <option value="{{id_administrador}}">{{nombre_administrador}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="input-group mt-2">
+                        <label for="id_despachado" class="input-group-text">Despachado</label>                        
+                        <select class="form-select" aria-label="Default select example"  name="id_despachado" required>
+                            <option selected value="">Seleccionar</option>
+                            {{#each seleccionDespachado}}
+                            <option value="{{id_despachado}}">{{nombre_despachado}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group mt-4 d-grid gap-2">
+                        <button class="btn btn-success">Crear PQRSD</button>
+                    </div>
+                    </form>
+                    {{#if message}}
+                        <p class="m-2" style="color: red;">{{message}}</p>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

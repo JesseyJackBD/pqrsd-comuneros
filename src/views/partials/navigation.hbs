@@ -1,0 +1,49 @@
+<script>
+  
+</script>
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #294076;">
+  <div class="container-fluid">
+    {{#if name}}
+    <a class="navbar-brand" href="/central">
+        <b>PQRSD</b>
+    </a>
+    <div class="navbar-brand">
+      <b class="nav-link link-light">Hola, {{name}}</b>
+    </div>
+    {{else}}
+    <a class="navbar-brand" href="/">
+      <b>PQRSD</b>
+    </a>
+    {{/if}}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav" style="margin-left: auto;">
+        {{#if name}}
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/central/list">Interno</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/central/listExt">Externo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/logout">Cerrar Sesion</a>
+          </li>
+          {{!-- {{#when id_admin 'eq' 1}}
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/central/pswrd">Contraseña</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/central/register">Registrar</a>
+          </li>
+          {{/when}} --}}
+        {{else}}
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/login">Iniciar Sesion</a>
+          </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>

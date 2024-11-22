@@ -1,0 +1,108 @@
+<div class="container p-0">
+  <div class="row mt-2">
+    {{#if personas}}  
+    {{#when contarPendiente.pendiente 'plus' 1}}
+    <div class="position-relative">
+      <div class="position-absolute top-0 end-0">
+        <a href="/central/notify" class="btn btn-primary stretched-link" style="color: rgb(240, 240, 240);">Penidientes</a> <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"> {{contarPendiente.pendiente}} <span class="visually-hidden">Sin resolver</span></span> 
+      </div>
+    </div>
+    {{/when}}
+    <h3 class="text-center text-uppercase p-2">Lista de PQRSD</h3>
+    <div class="d-flex bd-highlight p-0">
+      <div class="p-2 flex-grow-1 bd-highlight align-items-center ">
+        <form action="/central/list-search" method="post">
+          <div class="input-group mb-2">
+            <input type="number" class="form-control" placeholder="Local..." id="search" name="search" required/>
+            <div class="input-group-btn">
+              <button class="btn btn-outline-success" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="p-2 flex-grow-1 bd-highlight align-items-center ">
+        <form action="/central/list-searchUser" method="post">
+          <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="Usuario..." id="search" name="search" required/>
+            <div class="input-group-btn">
+              <button class="btn btn-outline-success" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="p-2 bd-highlight align-items-center">
+        <a class="btn btn-success" href="/central/addUser" role="button">Crear Usuario</a>      
+      </div>
+      <div class="p-2 bd-highlight align-items-center">
+        <a class="btn btn-success" href="/central/add" role="button">Crear PQRSD</a>      
+      </div>
+    </div> 
+    {{/if }}
+    {{#if personas}}   
+        <table class="table text-center align-middle table-striped rounded-3 overflow-hidden">
+          <thead>
+            <tr class="table-dark">
+              <td scope="col">Radicado</td>
+              <td scope="col">Local</td>
+              <td scope="col">Nombre</td>
+              <td scope="col">Categoria</td>
+              <td scope="col">Estado</td>              
+              <td scope="col">Asunto</td>
+              <td scope="col">Fecha</td>
+              <td scope="col">Registrado</td>              
+              <td scope="col">Acciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each personas}}
+              <tr>
+                <td>{{id_pqrsd}}</td>
+                <td><a href="/central/details/{{local}}">{{local}}</a></td>
+                <td><a href="/central/detailsEditUser/{{usuario}}">{{nombre_usuario}}</a></td>
+                <td>{{nombre_categoria}}</td>
+                <td>{{nombre_estado}}</td>                
+                <td>{{asunto}}</td>
+                <td>{{fecha}}</td>
+                <td>{{nombre_administrador}}</td>   
+                <td>
+                  <div class="btn-group">
+                    <a href="/central/edit/{{id_pqrsd}}" class="btn btn-warning p-2">
+                    <i class="fa-solid fa-pencil"></i></a>
+                    <a href="/central/delete/{{id_pqrsd}}" class="btn btn-danger p-2" onclick="return confirm('¿Estas seguro de eliminarlo?')">
+                    <i class="fa-solid fa-trash"></i></a>
+                  </div>
+                </td>                
+              </tr>
+            {{/each}}            
+          </tbody>
+          <tfoot>
+            <tr class="table-dark">
+              <td colspan="9">REGISTRO DE PQRSD</td>
+            </tr>
+          </tfoot>    
+          <div class="d-flex justify-content-between p-0">
+            <div class="d-flex align-items-center">
+              <h6 class="text-muted m-0">Cantidad de PQRSD pendientes: <a href="/central/list-cat/1 ">{{contarPendiente.pendiente}} </a> 
+            </div>
+            <div class="d-flex align-items-center">
+              {{>pagination}}        
+            </div>
+          </div>      
+        </table>        
+    </div>
+    {{else}}
+      <div class="card text-center mx-auto p-0 " style="width: 350px;">
+        <div class="card-header">
+          <h3>Ups!<p>No hay más PQRSD </p> </h3>
+        </div>
+        <div class="card-body">
+          <p>Crea un PQRSD haciendo click en el botón</p>
+          <a href="/central/add" class="btn btn-primary">Crear</a>
+        </div>   
+        </div>   
+    {{/if}}  
+</div>

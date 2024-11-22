@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row">
+    <div class="col-ms-4 col-md-12 mt-5 p-0">
+      <div class="card text-center">
+        <div class="card-header">
+          <h3 class="text-uppercase">Informacion {{persona.nombre_empresa}}</h3>
+        </div>
+        <div class="card-body">
+          <div class="input-group mt-2">
+            <label for="nombre_empresa" class="input-group-text">Empresa</label>
+            <input
+              class="form-control"
+              type="text"
+              name="nombre_empresa"
+              id="nombre_empresa"
+              value="{{persona.nombre_empresa}}"
+              disabled
+              required
+            />
+          </div>
+          <div class="input-group mt-2">
+            <label for="telefono_empresa" class="input-group-text">Telefono</label>
+            <input
+              class="form-control"
+              type="text"
+              name="telefono_empresa"
+              id="telefono_empresa"
+              value="{{persona.telefono_empresa}}"
+              disabled
+              required
+            />
+            <label for="correo_empresa" class="input-group-text">Correo</label>
+            <input
+              class="form-control"
+              type="text"
+              name="correo_empresa"
+              id="correo_empresa"
+              value="{{persona.correo_empresa}}"
+              disabled
+              required
+            />
+          </div>
+          <div class="input-group mt-2">
+            <label for="descripcion_empresa" class="input-group-text">Descripcion Empresa</label>
+            <input
+              class="form-control"
+              type="text"
+              name="descripcion_empresa"
+              id="descripcion_empresa"
+              value="{{persona.descripcion_empresa}}"
+              disabled
+              required
+            />
+          </div>
+          <div class="d-flex flex-row-reverse pt-2">
+          <a class="btn btn-warning" href="/central/detailsEditUserExt/{{persona.empresa}}" role="button">Editar Empresa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="card text-center mt-4 p-0">
+      <div class="card-header">
+        <h3 class="text-center text-uppercase p-2">Lista de PQRSD Externo</h3>
+      </div>
+      <div class="card-body">
+        <table
+          class="table text-center align-middle table-striped rounded-3 overflow-hidden"
+        >
+          <thead>
+            <tr class="table-dark">
+              <td scope="col">Radicado</td>
+              <td scope="col">Categoria</td>
+              <td scope="col">Estado</td>
+              <td scope="col">Asunto</td>
+              <td scope="col">Fecha</td>
+              <td scope="col">Despachado</td>
+              <td scope="col">Registrado</td>
+              <td scope="col">Acciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each personas}}
+              <tr>
+                <td>{{id_externo}}</td>
+                <td>{{nombre_categoria}}</td>
+                <td>{{nombre_estado}}</td>
+                <td>{{asunto}}</td>
+                <td>{{fecha}}</td>
+                <td>{{nombre_despachado}}</td>
+                <td>{{nombre_administrador}}</td>
+                <td>
+                  <div class="btn-group">
+                    <a href="/central/editExt/{{id_externo}}" class="btn btn-warning p-2">
+                      <i class="fa-solid fa-pencil"></i></a>
+                    <a href="/central/deleteExt/{{id_externo}}" class="btn btn-danger p-2" onclick="return confirm('¿Estas seguro de eliminarlo?')">
+                      <i class="fa-solid fa-trash"></i></a>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+          <tfoot>
+            <tr class="table-dark">
+              <td colspan="8">LISTA DE PQRSD</td>
+            </tr>
+          </tfoot>
+          <h3 class="form-text text-muted">Cantidad de PQRSD pendientes: {{contarPendiente.pendiente}}
+            {{!-- <a href="/list-cat/1 "> </a> --}}
+          </h3>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
